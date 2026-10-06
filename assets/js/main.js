@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initNavbar();
     initMobileMenu();
+    initHeroTyping();
+    init3DTiltCard();
+    initServiceSpotlight();
+    initSmartFloatingWhatsApp();
     initEstimator();
     initFAQ();
     initCopyChips();
@@ -17,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. Canvas Interactivo de Circuitos & Partículas Tecnológicas
+   1. Canvas Interactivo de Circuitos & Partículas con Interacción de Mouse
    ========================================================================== */
 function initTechCanvas() {
     const canvas = document.getElementById('tech-canvas');
@@ -27,25 +31,59 @@ function initTechCanvas() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
+    const mouse = { x: null, y: null, maxDist: 150 };
+
     window.addEventListener('resize', () => {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
     });
 
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
     const particles = [];
-    const particleCount = Math.min(Math.floor(width / 24), 50);
+    const particleCount = Math.min(Math.floor(width / 22), 55);
 
     class Particle {
         constructor() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.vx = (Math.random() - 0.5) * 0.5;
-            this.vy = (Math.random() - 0.5) * 0.5;
+            this.baseVx = (Math.random() - 0.5) * 0.5;
+            this.baseVy = (Math.random() - 0.5) * 0.5;
+            this.vx = this.baseVx;
+            this.vy = this.baseVy;
             this.radius = Math.random() * 2 + 1.2;
             this.color = Math.random() > 0.4 ? '#0066ff' : '#00d2ff';
         }
 
         update() {
+            // Reacción interactiva al mouse
+            if (mouse.x !== null && mouse.y !== null) {
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < mouse.maxDist) {
+                    const force = (mouse.maxDist - dist) / mouse.maxDist;
+                    // Suave atracción hacia el cursor emulando circuito activo
+                    this.vx += (dx / dist) * force * 0.08;
+                    this.vy += (dy / dist) * force * 0.08;
+                } else {
+                    this.vx = this.vx * 0.96 + this.baseVx * 0.04;
+                    this.vy = this.vy * 0.96 + this.baseVy * 0.04;
+                }
+            } else {
+                this.vx = this.vx * 0.98 + this.baseVx * 0.02;
+                this.vy = this.vy * 0.98 + this.baseVy * 0.02;
+            }
+
             this.x += this.vx;
             this.y += this.vy;
 
@@ -71,6 +109,7 @@ function initTechCanvas() {
     function animate() {
         ctx.clearRect(0, 0, width, height);
 
+        // Conectar nodos cercanos entre sí
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
@@ -85,6 +124,26 @@ function initTechCanvas() {
                     ctx.strokeStyle = `rgba(0, 150, 255, ${alpha * 0.22})`;
                     ctx.lineWidth = 1;
                     ctx.stroke();
+                }
+            }
+
+            // Conectar partículas cercanas al puntero del mouse
+            if (mouse.x !== null && mouse.y !== null) {
+                const dxMouse = mouse.x - particles[i].x;
+                const dyMouse = mouse.y - particles[i].y;
+                const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+
+                if (distMouse < mouse.maxDist) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    const alpha = 1 - distMouse / mouse.maxDist;
+                    ctx.strokeStyle = `rgba(0, 210, 255, ${alpha * 0.45})`;
+                    ctx.lineWidth = 1.3;
+                    ctx.shadowBlur = 6;
+                    ctx.shadowColor = '#00d2ff';
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
                 }
             }
         }
@@ -196,7 +255,127 @@ function initMobileMenu() {
 }
 
 /* ==========================================================================
-   6. Cotizador Interactivo en 3 Pasos
+   6. Efecto de Texto Dinámico (Typing Effect) en el Hero
+   ========================================================================== */
+function initHeroTyping() {
+    const typedElement = document.getElementById('typed-text');
+    if (!typedElement) return;
+
+    const phrases = [
+        'soluciones web',
+        'páginas web de alto impacto',
+        'tiendas online y e-commerce',
+        'automatizaciones con IA',
+        'diseño e identidad visual',
+        'gestión estratégica de redes'
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = phrases[0].length;
+    let isDeleting = false;
+    let speed = 90;
+
+    function tick() {
+        const currentPhrase = phrases[phraseIndex];
+
+        if (isDeleting) {
+            charIndex--;
+            typedElement.textContent = currentPhrase.substring(0, charIndex);
+            speed = 45;
+        } else {
+            charIndex++;
+            typedElement.textContent = currentPhrase.substring(0, charIndex);
+            speed = 90;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            // Pausa al terminar la palabra
+            speed = 2200;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            speed = 400;
+        }
+
+        setTimeout(tick, speed);
+    }
+
+    setTimeout(tick, 1800);
+}
+
+/* ==========================================================================
+   7. Efecto 3D Tilt y Glare en la Tarjeta de Presentación
+   ========================================================================== */
+function init3DTiltCard() {
+    const wrapper = document.getElementById('hero-tilt-card');
+    const card = wrapper ? wrapper.querySelector('.tech-card-glass') : null;
+    const glare = document.getElementById('card-glare');
+
+    if (!wrapper || !card) return;
+
+    wrapper.addEventListener('mousemove', (e) => {
+        const rect = wrapper.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = -((y - centerY) / centerY) * 10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+
+        if (glare) {
+            glare.style.opacity = '1';
+            glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.28), transparent 60%)`;
+        }
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+        card.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        if (glare) {
+            glare.style.opacity = '0';
+        }
+    });
+}
+
+/* ==========================================================================
+   8. Spotlight Interactivo en las Tarjetas de Servicios
+   ========================================================================== */
+function initServiceSpotlight() {
+    const cards = document.querySelectorAll('.service-card');
+    cards.forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+}
+
+/* ==========================================================================
+   9. Aparición Inteligente del Botón Flotante de WhatsApp
+   ========================================================================== */
+function initSmartFloatingWhatsApp() {
+    const floatBtn = document.querySelector('.floating-whatsapp-container');
+    if (!floatBtn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 280) {
+            floatBtn.classList.add('visible');
+        } else {
+            floatBtn.classList.remove('visible');
+        }
+    });
+}
+
+/* ==========================================================================
+   10. Cotizador Interactivo en 3 Pasos
    ========================================================================== */
 function initEstimator() {
     const estimator = document.getElementById('cotizador');
@@ -221,13 +400,11 @@ function initEstimator() {
         if (summaryGoal) summaryGoal.textContent = state.objetivo;
     }
 
-    // Manejo de clicks en opciones
     document.querySelectorAll('.option-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
             const group = btn.getAttribute('data-group');
             const value = btn.getAttribute('data-value');
 
-            // Desmarcar hermanos del mismo grupo
             document.querySelectorAll(`.option-btn[data-group="${group}"]`).forEach((b) => b.classList.remove('active'));
             btn.classList.add('active');
 
@@ -236,9 +413,7 @@ function initEstimator() {
         });
     });
 
-    // Navegación entre pasos
     function goToStep(stepNum) {
-        // Indicadores
         document.querySelectorAll('.step-indicator').forEach((ind) => {
             const num = parseInt(ind.getAttribute('data-step'), 10);
             if (num <= stepNum) {
@@ -248,7 +423,6 @@ function initEstimator() {
             }
         });
 
-        // Contenidos
         document.querySelectorAll('.step-content').forEach((content) => {
             content.classList.remove('active');
         });
@@ -280,7 +454,6 @@ function initEstimator() {
         });
     });
 
-    // Enviar estimación a WhatsApp
     if (btnEstimatorWhatsApp) {
         btnEstimatorWhatsApp.addEventListener('click', () => {
             const text = 
@@ -296,14 +469,12 @@ function initEstimator() {
         });
     }
 
-    // Aplicar al formulario de contacto
     if (btnApplyToForm) {
         btnApplyToForm.addEventListener('click', () => {
             const servicioSelect = document.getElementById('servicio');
             const mensajeTextarea = document.getElementById('mensaje');
 
             if (servicioSelect) {
-                // Mapear al select si coincide
                 for (let i = 0; i < servicioSelect.options.length; i++) {
                     if (servicioSelect.options[i].value.includes(state.servicio) || state.servicio.includes(servicioSelect.options[i].value)) {
                         servicioSelect.selectedIndex = i;
@@ -324,7 +495,7 @@ function initEstimator() {
 }
 
 /* ==========================================================================
-   7. Preguntas Frecuentes (FAQ Acordeón)
+   11. Preguntas Frecuentes (FAQ Acordeón)
    ========================================================================== */
 function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
@@ -334,8 +505,6 @@ function initFAQ() {
         const questionBtn = item.querySelector('.faq-question');
         questionBtn.addEventListener('click', () => {
             const isActive = item.classList.contains('active');
-
-            // Cerrar los demás acordeones
             faqItems.forEach((other) => other.classList.remove('active'));
 
             if (!isActive) {
@@ -346,7 +515,7 @@ function initFAQ() {
 }
 
 /* ==========================================================================
-   8. Botones de Copiar al Portapapeles (Chips)
+   12. Botones de Copiar al Portapapeles (Chips)
    ========================================================================== */
 function initCopyChips() {
     document.querySelectorAll('.btn-copy-chip').forEach((btn) => {
@@ -376,7 +545,7 @@ function initCopyChips() {
 }
 
 /* ==========================================================================
-   9. Notificaciones Toast Elegantes
+   13. Notificaciones Toast Elegantes
    ========================================================================== */
 function showToast(message, type = 'info') {
     const container = document.getElementById('toast-container');
@@ -388,12 +557,10 @@ function showToast(message, type = 'info') {
 
     container.appendChild(toast);
 
-    // Animación de entrada
     requestAnimationFrame(() => {
         toast.classList.add('show');
     });
 
-    // Auto-remoción tras 3.5 segundos
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 400);
@@ -401,7 +568,7 @@ function showToast(message, type = 'info') {
 }
 
 /* ==========================================================================
-   10. Formulario de Contacto (Validación Inline + WhatsApp + Email)
+   14. Formulario de Contacto (Validación Inline + WhatsApp + Email)
    ========================================================================== */
 function initContactForm() {
     const form = document.getElementById('contact-form');
@@ -419,7 +586,6 @@ function initContactForm() {
         mensaje: document.getElementById('mensaje')
     };
 
-    // Limpiar errores en input
     Object.values(fields).forEach((input) => {
         if (!input) return;
         input.addEventListener('input', () => {
@@ -436,21 +602,18 @@ function initContactForm() {
         let isValid = true;
         let firstInvalid = null;
 
-        // Validar Nombre
         if (!fields.nombre.value.trim()) {
             document.getElementById('group-nombre').classList.add('has-error');
             isValid = false;
             if (!firstInvalid) firstInvalid = fields.nombre;
         }
 
-        // Validar Teléfono
         if (!fields.telefono.value.trim() || fields.telefono.value.trim().length < 6) {
             document.getElementById('group-telefono').classList.add('has-error');
             isValid = false;
             if (!firstInvalid) firstInvalid = fields.telefono;
         }
 
-        // Validar Email
         const emailVal = fields.email.value.trim();
         if (!emailVal || !emailVal.includes('@') || !emailVal.includes('.')) {
             document.getElementById('group-email').classList.add('has-error');
@@ -458,14 +621,12 @@ function initContactForm() {
             if (!firstInvalid) firstInvalid = fields.email;
         }
 
-        // Validar Servicio
         if (!fields.servicio.value) {
             document.getElementById('group-servicio').classList.add('has-error');
             isValid = false;
             if (!firstInvalid) firstInvalid = fields.servicio;
         }
 
-        // Validar Mensaje
         if (!fields.mensaje.value.trim()) {
             document.getElementById('group-mensaje').classList.add('has-error');
             isValid = false;
@@ -490,7 +651,6 @@ function initContactForm() {
         };
     }
 
-    // Botón Enviar por WhatsApp
     if (btnSubmitWhatsApp) {
         btnSubmitWhatsApp.addEventListener('click', () => {
             if (!validateAll()) return;
@@ -511,7 +671,6 @@ ${data.mensaje}`;
         });
     }
 
-    // Envío vía Correo Electrónico
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         if (!validateAll()) return;
@@ -539,7 +698,7 @@ Saludos cordiales.`;
 }
 
 /* ==========================================================================
-   11. Desplazamiento Suave (Smooth Scroll)
+   15. Desplazamiento Suave (Smooth Scroll)
    ========================================================================== */
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

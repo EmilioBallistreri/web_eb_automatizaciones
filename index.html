@@ -80,12 +80,16 @@
                 <a href="#servicios" class="nav-link">Servicios</a>
                 <a href="#cotizador" class="nav-link">Cotizador</a>
                 <a href="#clientes" class="nav-link">Clientes</a>
-                <a href="#faq" class="nav-link">Preguntas Frecuentes</a>
+                <a href="#faq" class="nav-link">FAQ</a>
                 <a href="#contacto" class="nav-link">Contacto</a>
             </nav>
 
             <!-- Quick Action & Social Header -->
             <div class="nav-actions">
+                <div class="availability-chip" title="Agenda abierta para nuevos desarrollos">
+                    <span class="chip-dot"></span>
+                    <span class="chip-text">Disponible</span>
+                </div>
                 <a href="https://instagram.com/eb_automatizaciones" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram @eb_automatizaciones" title="Instagram">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -145,7 +149,7 @@
                     </div>
 
                     <h1 class="hero-title">
-                        Impulsá tu empresa con <span class="gradient-text">soluciones web</span> y <span class="accent-text">automatizaciones</span> a medida
+                        Impulsá tu empresa con <span class="typing-text-wrapper"><span id="typed-text" class="gradient-text">soluciones web</span><span class="typing-cursor">|</span></span> y <span class="accent-text">automatizaciones</span> a medida
                     </h1>
 
                     <p class="hero-description">
@@ -153,7 +157,7 @@
                     </p>
 
                     <div class="hero-actions">
-                        <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20quiero%20hacerte%20una%20consulta%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-glow" id="hero-btn-whatsapp">
+                        <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20quiero%20hacerte%20una%20consulta%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-glow btn-shimmer" id="hero-btn-whatsapp">
                             <span>Iniciar consulta directa</span>
                             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -181,8 +185,9 @@
 
                 <!-- Hero Visual Showcase -->
                 <div class="hero-visual reveal-on-scroll">
-                    <div class="visual-card-wrapper">
+                    <div class="visual-card-wrapper" id="hero-tilt-card">
                         <div class="tech-card-glass">
+                            <div class="card-glare" id="card-glare"></div>
                             <div class="tech-card-header">
                                 <div class="tech-window-dots">
                                     <span class="dot red"></span>
