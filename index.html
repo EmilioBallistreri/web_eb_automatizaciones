@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eb_automatizaciones | Emilio Ballistreri - IA, Desarrollo Web y Automatización</title>
+    <meta name="description" content="Soluciones tecnológicas integrales: Páginas Web, E-commerce, Automatizaciones con IA, Diseño Gráfico y Gestión de Redes. Potenciá tu negocio con eb_automatizaciones.">
+    <meta name="keywords" content="eb_automatizaciones, Emilio Ballistreri, páginas web, ecommerce, automatización con IA, diseño gráfico, gestión de redes, Córdoba, Argentina">
+    <meta name="author" content="Emilio Ballistreri">
+
+    <!-- Open Graph / Meta Social -->
+    <meta property="og:title" content="eb_automatizaciones | Emilio Ballistreri - Soluciones Digitales & IA">
+    <meta property="og:description" content="Desarrollo web a medida, tiendas online, flujos automatizados con IA, diseño y gestión estratégica de redes.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/logo.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+
+    <!-- Schema.org JSON-LD para SEO y Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "eb_automatizaciones",
+      "founder": {
+        "@type": "Person",
+        "name": "Emilio Ballistreri"
+      },
+      "description": "Desarrollo de páginas web, tiendas virtuales e-commerce, automatizaciones con inteligencia artificial, diseño gráfico y gestión de redes sociales.",
+      "telephone": "+5493515171905",
+      "email": "ballistreriemilio18@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Córdoba",
+        "addressRegion": "Córdoba",
+        "addressCountry": "AR"
+      },
+      "url": "https://ebautomatizaciones.com",
+      "sameAs": [
+        "https://instagram.com/eb_automatizaciones"
+      ],
+      "areaServed": "Global",
+      "priceRange": "$$"
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Barra Superior de Progreso de Lectura -->
+    <div id="scroll-progress-bar" class="scroll-progress-bar"></div>
+
+    <!-- Canvas de fondo para partículas y circuitos tecnológicos -->
+    <canvas id="tech-canvas"></canvas>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#inicio" class="nav-brand" id="nav-brand-logo">
+                <img src="assets/images/logo.jpg" alt="Logo eb_automatizaciones" class="brand-logo-img">
+                <div class="brand-text">
+                    <span class="brand-name">eb_automatizaciones</span>
+                    <span class="brand-subtitle">EMILIO BALLISTRERI</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="nav-links" id="desktop-menu">
+                <a href="#inicio" class="nav-link active">Inicio</a>
+                <a href="#servicios" class="nav-link">Servicios</a>
+                <a href="#cotizador" class="nav-link">Cotizador</a>
+                <a href="#clientes" class="nav-link">Clientes</a>
+                <a href="#faq" class="nav-link">Preguntas Frecuentes</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </nav>
+
+            <!-- Quick Action & Social Header -->
+            <div class="nav-actions">
+                <a href="https://instagram.com/eb_automatizaciones" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram @eb_automatizaciones" title="Instagram">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20te%20contacto%20desde%20la%20web%20para%20consultar%20por%20tus%20servicios." target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="WhatsApp +54 9 351 517-1905" title="WhatsApp">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                </a>
+                <a href="#contacto" class="btn btn-primary btn-sm nav-cta">Hablemos</a>
+            </div>
+
+            <!-- Hamburger Button for Mobile -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+            <nav class="mobile-nav-links">
+                <a href="#inicio" class="mobile-nav-link">Inicio</a>
+                <a href="#servicios" class="mobile-nav-link">Servicios</a>
+                <a href="#cotizador" class="mobile-nav-link">Cotizador Interactivo</a>
+                <a href="#clientes" class="mobile-nav-link">Clientes</a>
+                <a href="#faq" class="mobile-nav-link">Preguntas Frecuentes</a>
+                <a href="#contacto" class="mobile-nav-link">Contacto</a>
+            </nav>
+            <div class="mobile-drawer-footer">
+                <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20te%20contacto%20desde%20la%20web%20para%20solicitar%20una%20reunion." target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100">
+                    Consultar por WhatsApp
+                </a>
+                <div class="mobile-socials">
+                    <a href="https://instagram.com/eb_automatizaciones" target="_blank" rel="noopener noreferrer">@eb_automatizaciones</a>
+                    <a href="mailto:ballistreriemilio18@gmail.com">ballistreriemilio18@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECCIÓN 1: INICIO (HERO) -->
+        <section id="inicio" class="hero-section">
+            <div class="hero-glow hero-glow-1"></div>
+            <div class="hero-glow hero-glow-2"></div>
+            
+            <div class="container hero-container">
+                <div class="hero-content reveal-on-scroll">
+                    <div class="badge-pill">
+                        <span class="badge-dot"></span>
+                        <span class="badge-text">Innovación Digital & Inteligencia Artificial</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Impulsá tu empresa con <span class="gradient-text">soluciones web</span> y <span class="accent-text">automatizaciones</span> a medida
+                    </h1>
+
+                    <p class="hero-description">
+                        En <strong>eb_automatizaciones</strong> fusionamos diseño de alta fidelidad, desarrollo web moderno y flujos de automatización con IA para escalar tus conversiones y optimizar cada proceso de tu negocio.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20quiero%20hacerte%20una%20consulta%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-glow" id="hero-btn-whatsapp">
+                            <span>Iniciar consulta directa</span>
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="#cotizador" class="btn btn-secondary" id="hero-btn-cotizador">
+                            <span>⚡ Cotizar en 3 pasos</span>
+                        </a>
+                    </div>
+
+                    <!-- Métricas / Indicadores de Confianza -->
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Desarrollo personalizado</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">+70%</span>
+                            <span class="stat-label">Ahorro de tiempo operativo</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Procesos automatizados</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual Showcase -->
+                <div class="hero-visual reveal-on-scroll">
+                    <div class="visual-card-wrapper">
+                        <div class="tech-card-glass">
+                            <div class="tech-card-header">
+                                <div class="tech-window-dots">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                </div>
+                                <span class="tech-window-title">eb_automatizaciones.core</span>
+                                <span class="status-live">ONLINE</span>
+                            </div>
+                            <div class="tech-card-body">
+                                <div class="logo-preview-box">
+                                    <img src="assets/images/logo.jpg" alt="EB Emilio Ballistreri" class="hero-logo-display">
+                                    <div class="circuit-lines-decor"></div>
+                                </div>
+                                <div class="features-mini-list">
+                                    <div class="mini-feature-item">
+                                        <div class="feature-icon-bullet blue"></div>
+                                        <div>
+                                            <strong>IA & Flujos Automatizados</strong>
+                                            <p>Respuestas instantáneas, CRM y sincronización 24/7</p>
+                                        </div>
+                                    </div>
+                                    <div class="mini-feature-item">
+                                        <div class="feature-icon-bullet cyan"></div>
+                                        <div>
+                                            <strong>Plataformas Web & E-Commerce</strong>
+                                            <p>Alta velocidad, diseño responsive y conversión máxima</p>
+                                        </div>
+                                    </div>
+                                    <div class="mini-feature-item">
+                                        <div class="feature-icon-bullet purple"></div>
+                                        <div>
+                                            <strong>Diseño & Gestión Social</strong>
+                                            <p>Identidad sólida y contenido estratégico que conecta</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-card-footer">
+                                <span>Atención personalizada por Emilio Ballistreri</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FRANJA DE TECNOLOGÍAS & PLATAFORMAS -->
+        <section class="tech-stack-strip reveal-on-scroll">
+            <div class="container">
+                <p class="tech-strip-title">TECNOLOGÍAS & HERRAMIENTAS INTEGRADAS</p>
+                <div class="tech-strip-badges">
+                    <span class="tech-badge">⚡ OpenAI & Inteligencia Artificial</span>
+                    <span class="tech-badge">🌐 Desarrollo Web Moderno</span>
+                    <span class="tech-badge">💳 Pasarelas Mercado Pago & Stripe</span>
+                    <span class="tech-badge">📲 WhatsApp Cloud API & Chatbots</span>
+                    <span class="tech-badge">🛒 Shopify & Tiendas E-commerce</span>
+                    <span class="tech-badge">📊 CRM & Automatizaciones No-Code</span>
+                    <span class="tech-badge">🎨 Figma & Diseño UI/UX</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: SERVICIOS -->
+        <section id="servicios" class="services-section">
+            <div class="container">
+                <div class="section-header text-center reveal-on-scroll">
+                    <div class="badge-pill mx-auto">
+                        <span class="badge-text">Propuesta de Valor</span>
+                    </div>
+                    <h2 class="section-title">Servicios especializados para hacer crecer tu marca</h2>
+                    <p class="section-subtitle">
+                        Soluciones integrales de punta a punta: desde el diseño y la presencia online, hasta la infraestructura de ventas y la automatización inteligente.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Servicio 1: Páginas Web -->
+                    <div class="service-card reveal-on-scroll" id="servicio-web">
+                        <div class="service-card-border-glow"></div>
+                        <div class="service-icon-wrapper">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <div class="service-tag">Presencia Online</div>
+                        <h3 class="service-title">Páginas Web</h3>
+                        <p class="service-desc">
+                            Desarrollo de sitios web corporativos y landing pages modernas, ultra veloces y optimizadas para posicionar en Google y convertir visitantes en clientes reales.
+                        </p>
+                        <ul class="service-features">
+                            <li>Diseño 100% responsive para móviles y escritorio</li>
+                            <li>Optimización SEO y velocidad de carga extrema</li>
+                            <li>Estructura intuitiva y enfocada en llamadas a la acción</li>
+                        </ul>
+                        <div class="service-footer">
+                            <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20me%20interesa%20cotizar%20el%20desarrollo%20de%20una%20P%C3%A1gina%20Web." target="_blank" rel="noopener noreferrer" class="service-link">
+                                <span>Consultar por Páginas Web</span>
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 2: E-commerce -->
+                    <div class="service-card reveal-on-scroll" id="servicio-ecommerce">
+                        <div class="service-card-border-glow"></div>
+                        <div class="service-icon-wrapper">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </div>
+                        <div class="service-tag">Ventas Digitales</div>
+                        <h3 class="service-title">E-commerce</h3>
+                        <p class="service-desc">
+                            Tiendas online completas preparadas para vender las 24 horas. Integradas con pasarelas de cobro, gestión ágil de stock, envíos y experiencia de compra sin fricciones.
+                        </p>
+                        <ul class="service-features">
+                            <li>Integración con Mercado Pago, tarjetas y medios locales</li>
+                            <li>Catálogo auto-administrable con variantes y filtros</li>
+                            <li>Checkout seguro y checkout express por WhatsApp</li>
+                        </ul>
+                        <div class="service-footer">
+                            <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20quiero%20asesoramiento%20para%20crear%20mi%20tienda%20online%20(E-commerce)." target="_blank" rel="noopener noreferrer" class="service-link">
+                                <span>Consultar por E-commerce</span>
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 3: Automatizaciones con IA (Destacado) -->
+                    <div class="service-card featured reveal-on-scroll" id="servicio-automatizaciones">
+                        <div class="featured-badge">Servicio Estrella</div>
+                        <div class="service-card-border-glow"></div>
+                        <div class="service-icon-wrapper">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                            </svg>
+                        </div>
+                        <div class="service-tag">Productividad & IA</div>
+                        <h3 class="service-title">Automatizaciones</h3>
+                        <p class="service-desc">
+                            Flujos inteligentes con Inteligencia Artificial que conectan tus herramientas: gestión automática de clientes, respuestas en WhatsApp, seguimiento de prospectos y reducción de tareas manuales.
+                        </p>
+                        <ul class="service-features">
+                            <li>Chatbots y asistentes inteligentes entrenados para tu rubro</li>
+                            <li>Sincronización automática entre formularios, CRM y WhatsApp</li>
+                            <li>Notificaciones, presupuestos y recordatorios sin intervención humana</li>
+                        </ul>
+                        <div class="service-footer">
+                            <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20quiero%20implementar%20Automatizaciones%20con%20IA%20en%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="service-link">
+                                <span>Consultar por Automatizaciones</span>
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 4: Diseño Gráfico -->
+                    <div class="service-card reveal-on-scroll" id="servicio-diseno">
+                        <div class="service-card-border-glow"></div>
+                        <div class="service-icon-wrapper">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 2a14.5 14.5 0 0 0 0 20 10 10 0 0 0 0-20"></path>
+                                <path d="M2 12h20"></path>
+                            </svg>
+                        </div>
+                        <div class="service-tag">Identidad Visual</div>
+                        <h3 class="service-title">Diseño Gráfico</h3>
+                        <p class="service-desc">
+                            Creación de identidad visual corporativa que transmite solidez y profesionalismo. Logotipos, manual de marca, piezas publicitarias y diseño UI moderno para destacar sobre la competencia.
+                        </p>
+                        <ul class="service-features">
+                            <li>Branding integral, diseño de logos y paletas cromáticas</li>
+                            <li>Banners publicitarios de alto impacto para anuncios y redes</li>
+                            <li>Material corporativo, folletería digital y presentaciones</li>
+                        </ul>
+                        <div class="service-footer">
+                            <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20me%20gustar%C3%ADa%20consultar%20por%20servicios%20de%20Dise%C3%B1o%20Gr%C3%A1fico." target="_blank" rel="noopener noreferrer" class="service-link">
+                                <span>Consultar por Diseño Gráfico</span>
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 5: Gestión de Redes -->
+                    <div class="service-card reveal-on-scroll" id="servicio-redes">
+                        <div class="service-card-border-glow"></div>
+                        <div class="service-icon-wrapper">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </div>
+                        <div class="service-tag">Comunidad & Alcance</div>
+                        <h3 class="service-title">Gestión de Redes</h3>
+                        <p class="service-desc">
+                            Estrategia integral de contenidos para Instagram y plataformas clave. Generación de interacción genuina, calendario editorial planificado y optimización de tu perfil para atraer clientes calificados.
+                        </p>
+                        <ul class="service-features">
+                            <li>Planificación estratégica de publicaciones, reels y carruseles</li>
+                            <li>Copywriting persuasivo y optimización de biografía</li>
+                            <li>Monitoreo de métricas y crecimiento orgánico sostenido</li>
+                        </ul>
+                        <div class="service-footer">
+                            <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20quisiera%20recibir%20informaci%C3%B3n%20sobre%20Gesti%C3%B3n%20de%20Redes." target="_blank" rel="noopener noreferrer" class="service-link">
+                                <span>Consultar por Gestión de Redes</span>
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE VALOR AGREGADO / METODOLOGÍA -->
+        <section class="method-section">
+            <div class="container">
+                <div class="method-wrapper reveal-on-scroll">
+                    <div class="method-header">
+                        <h2>¿Por qué trabajar con <span class="gradient-text">eb_automatizaciones</span>?</h2>
+                        <p>Combinamos visión de negocios, estética formal de vanguardia y tecnología de punta para que no tengas que preocuparte por nada técnico.</p>
+                    </div>
+                    <div class="method-cards-grid">
+                        <div class="method-card">
+                            <div class="method-step-num">01</div>
+                            <h4>Diagnóstico Claro</h4>
+                            <p>Analizamos las necesidades reales de tu empresa para proponer soluciones concretas, sin sobrecostos ni tecnicismos innecesarios.</p>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-step-num">02</div>
+                            <h4>Desarrollo Ágil</h4>
+                            <p>Diseñamos, programamos e implementamos en tiempos optimizados, manteniéndote informado en cada avance del proyecto.</p>
+                        </div>
+                        <div class="method-card">
+                            <div class="method-step-num">03</div>
+                            <h4>Resultados Medibles</h4>
+                            <p>Cada web, automatización o contenido está orientado a rentabilidad: más consultas, procesos más rápidos y clientes satisfechos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUEVA SECCIÓN: COTIZADOR INTERACTIVO EN 3 PASOS -->
+        <section id="cotizador" class="estimator-section">
+            <div class="container">
+                <div class="section-header text-center reveal-on-scroll">
+                    <div class="badge-pill mx-auto">
+                        <span class="badge-dot"></span>
+                        <span class="badge-text">Asistente Interactivo de Cotización</span>
+                    </div>
+                    <h2 class="section-title">Armá tu proyecto en 3 simples pasos</h2>
+                    <p class="section-subtitle">
+                        Seleccioná tus necesidades y generá una consulta personalizada que se enviará directamente a WhatsApp con todos los detalles.
+                    </p>
+                </div>
+
+                <div class="estimator-box reveal-on-scroll">
+                    <div class="estimator-steps-nav">
+                        <div class="step-indicator active" data-step="1">
+                            <span class="step-circle">1</span>
+                            <span class="step-text">Servicio</span>
+                        </div>
+                        <div class="step-line"></div>
+                        <div class="step-indicator" data-step="2">
+                            <span class="step-circle">2</span>
+                            <span class="step-text">Etapa actual</span>
+                        </div>
+                        <div class="step-line"></div>
+                        <div class="step-indicator" data-step="3">
+                            <span class="step-circle">3</span>
+                            <span class="step-text">Objetivo clave</span>
+                        </div>
+                    </div>
+
+                    <!-- Paso 1 -->
+                    <div class="step-content active" id="step-pane-1">
+                        <h4 class="step-title">¿Qué solución o servicio principal necesitás?</h4>
+                        <div class="options-grid">
+                            <button type="button" class="option-btn active" data-group="servicio" data-value="Páginas Web">
+                                <span class="option-icon">💻</span>
+                                <strong>Páginas Web</strong>
+                                <small>Institucional / Landing de conversión</small>
+                            </button>
+                            <button type="button" class="option-btn" data-group="servicio" data-value="E-commerce">
+                                <span class="option-icon">🛒</span>
+                                <strong>E-commerce</strong>
+                                <small>Tienda online con pagos y stock</small>
+                            </button>
+                            <button type="button" class="option-btn" data-group="servicio" data-value="Automatizaciones & IA">
+                                <span class="option-icon">⚡</span>
+                                <strong>Automatizaciones & IA</strong>
+                                <small>Chatbots, CRM y procesos 24/7</small>
+                            </button>
+                            <button type="button" class="option-btn" data-group="servicio" data-value="Diseño Gráfico">
+                                <span class="option-icon">🎨</span>
+                                <strong>Diseño Gráfico</strong>
+                                <small>Branding, piezas publicitarias y UI</small>
+                            </button>
+                            <button type="button" class="option-btn" data-group="servicio" data-value="Gestión de Redes">
+                                <span class="option-icon">📱</span>
+                                <strong>Gestión de Redes</strong>
+                                <small>Contenido estratégico y alcance</small>
+                            </button>
+                            <button type="button" class="option-btn" data-group="servicio" data-value="Solución Integral">
+                                <span class="option-icon">🚀</span>
+                                <strong>Solución Integral</strong>
+                                <small>Combinación de múltiples servicios</small>
+                            </button>
+                        </div>
+                        <div class="step-controls">
+                            <button type="button" class="btn btn-primary btn-next-step" data-next="2">Continuar al paso 2 &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="step-content" id="step-pane-2">
+                        <h4 class="step-title">¿En qué etapa se encuentra tu negocio actualmente?</h4>
+                        <div class="options-grid">
+                            <button type="button" class="option-btn active" data-group="etapa" data-value="Emprendimiento nuevo / Lanzamiento">
+                                <span class="option-icon">🌱</span>
+                                <strong>Nuevo Lanzamiento</strong>
+                                <small>Empezando desde cero</small>
+                            </button>
+                            <button type="button" class="option-btn" data-group="etapa" data-value="Negocio en marcha que busca modernizarse">
+                                <span class="option-icon">📈</span>
+                                <strong>Negocio en Marcha</strong>
+                                <small>Buscando modernizar la imagen y procesos</small>
+                            </button>
+                            <button type="button" class="option-btn" data-group="etapa" data-value="Empresa consolidada que busca escalar">
+                                <span class="option-icon">🏢</span>
+                                <strong>Empresa Consolidada</strong>
+                                <small>Buscando eficiencia y escalabilidad</small>
+                            </button>
+                        </div>
+                        <div class="step-controls">
+                            <button type="button" class="btn btn-secondary btn-prev-step" data-prev="1">&larr; Volver</button>
+                            <button type="button" class="btn btn-primary btn-next-step" data-next="3">Continuar al paso 3 &rarr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="step-content" id="step-pane-3">
+                        <h4 class="step-title">¿Cuál es tu prioridad o meta principal?</h4>
+                        <div class="options-grid">
+                            <button type="button" class="option-btn active" data-group="objetivo" data-value="Vender más y captar clientes calificados">
+                                <span class="option-icon">🎯</span>
+                                <strong>Multiplicar Ventas</strong>
+                                <small>Aumentar flujo de consultas y clientes</small>
+                            </button>
+                            <button type="button" class="option-btn" data-group="objetivo" data-value="Ahorrar tiempo y automatizar tareas repetitivas">
+                                <span class="option-icon">⏱️</span>
+                                <strong>Ahorrar Tiempo</strong>
+                                <small>Eliminar tareas manuales y desorden</small>
+                            </button>
+                            <button type="button" class="option-btn" data-group="objetivo" data-value="Profesionalizar la imagen y presencia de marca">
+                                <span class="option-icon">✨</span>
+                                <strong>Jerarquía y Confianza</strong>
+                                <small>Transmitir máxima seriedad y nivel</small>
+                            </button>
+                        </div>
+
+                        <!-- Resumen y Acción Directa -->
+                        <div class="estimator-summary-card">
+                            <div class="summary-header">
+                                <h5>Resumen de tu selección:</h5>
+                            </div>
+                            <div class="summary-details">
+                                <p><strong>Servicio:</strong> <span id="summary-service">Páginas Web</span></p>
+                                <p><strong>Etapa:</strong> <span id="summary-stage">Nuevo Lanzamiento</span></p>
+                                <p><strong>Meta:</strong> <span id="summary-goal">Multiplicar Ventas</span></p>
+                            </div>
+                            <div class="summary-action">
+                                <button type="button" id="btn-estimator-whatsapp" class="btn btn-whatsapp-primary w-100">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                                    <span>Consultar cotización por WhatsApp</span>
+                                </button>
+                                <a href="#contacto" class="btn btn-secondary w-100 btn-apply-to-form">
+                                    Aplicar datos al formulario de contacto &darr;
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="step-controls">
+                            <button type="button" class="btn btn-secondary btn-prev-step" data-prev="2">&larr; Volver</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: CLIENTES Y CASOS DE ÉXITO -->
+        <section id="clientes" class="clients-section">
+            <div class="container">
+                <div class="section-header text-center reveal-on-scroll">
+                    <div class="badge-pill mx-auto">
+                        <span class="badge-text">Casos de Éxito & Resultados</span>
+                    </div>
+                    <h2 class="section-title">Confianza respaldada por resultados reales</h2>
+                    <p class="section-subtitle">
+                        Empresas y profesionales que transformaron su operación digital e incrementaron sus ventas junto a nosotros.
+                    </p>
+                </div>
+
+                <!-- Métricas Destacadas de Proyectos -->
+                <div class="clients-highlight-banner reveal-on-scroll">
+                    <div class="highlight-item">
+                        <div class="highlight-val">+150%</div>
+                        <div class="highlight-desc">Tasa de respuesta inmediata mediante chatbots de IA</div>
+                    </div>
+                    <div class="highlight-separator"></div>
+                    <div class="highlight-item">
+                        <div class="highlight-val">-3.5 hrs</div>
+                        <div class="highlight-desc">Diarias ahorradas por cliente en tareas administrativas manuales</div>
+                    </div>
+                    <div class="highlight-separator"></div>
+                    <div class="highlight-item">
+                        <div class="highlight-val">99.8%</div>
+                        <div class="highlight-desc">Disponibilidad en tiendas online y plataformas web desarrolladas</div>
+                    </div>
+                </div>
+
+                <!-- Testimonios / Casos de Estudio -->
+                <div class="testimonials-grid">
+                    <!-- Caso 1 -->
+                    <div class="testimonial-card reveal-on-scroll">
+                        <div class="rating-stars">
+                            ★★★★★
+                        </div>
+                        <p class="testimonial-text">
+                            "Antes perdíamos prospectos todos los fines de semana porque nadie respondía a tiempo. La integración de automatizaciones con IA y la nueva tienda online que armó Emilio transformó por completo nuestro flujo de ventas. Ahora cerramos pedidos en piloto automático."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar-badge">MF</div>
+                            <div class="author-info">
+                                <strong>Martín Fernández</strong>
+                                <span>Director Comercial · Retail & E-commerce</span>
+                            </div>
+                        </div>
+                        <div class="case-tag">Proyecto: E-commerce + Automatización IA</div>
+                    </div>
+
+                    <!-- Caso 2 -->
+                    <div class="testimonial-card featured-testimonial reveal-on-scroll">
+                        <div class="rating-stars">
+                            ★★★★★
+                        </div>
+                        <p class="testimonial-text">
+                            "Necesitábamos una imagen corporativa seria y una página web formal que transmita la jerarquía de nuestra firma. El resultado superó las expectativas: rapidez impecable, diseño sobrio y un formulario conectado directamente a nuestro WhatsApp que no falla nunca."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar-badge">LG</div>
+                            <div class="author-info">
+                                <strong>Lucía Giménez</strong>
+                                <span>Socia Gerente · Consultoría & Servicios</span>
+                            </div>
+                        </div>
+                        <div class="case-tag">Proyecto: Web Corporativa + Diseño Gráfico</div>
+                    </div>
+
+                    <!-- Caso 3 -->
+                    <div class="testimonial-card reveal-on-scroll">
+                        <div class="rating-stars">
+                            ★★★★★
+                        </div>
+                        <p class="testimonial-text">
+                            "El acompañamiento en la gestión de redes sociales nos permitió profesionalizar nuestro perfil y ganar autoridad en el sector. Sumado a la landing page para captar consultas, logramos triplicar los contactos calificados en menos de 60 días."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar-badge">RA</div>
+                            <div class="author-info">
+                                <strong>Rodrigo Álvarez</strong>
+                                <span>Fundador · Soluciones Industriales</span>
+                            </div>
+                        </div>
+                        <div class="case-tag">Proyecto: Gestión de Redes + Landing Page</div>
+                    </div>
+                </div>
+
+                <!-- Logotipos / Rubros de Confianza -->
+                <div class="trusted-sectors reveal-on-scroll">
+                    <p class="sectors-title">SOLUCIONES IMPLEMENTADAS PARA DIVERSOS SECTORES</p>
+                    <div class="sectors-tags">
+                        <span class="sector-pill">Comercio Minorista & Mayorista</span>
+                        <span class="sector-pill">Estudios Profesionales & Consultoras</span>
+                        <span class="sector-pill">Sector Salud & Clínicas</span>
+                        <span class="sector-pill">Bienes Raíces & Inmobiliarias</span>
+                        <span class="sector-pill">Marcas Personales & Formadores</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUEVA SECCIÓN: PREGUNTAS FRECUENTES (FAQ) -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="section-header text-center reveal-on-scroll">
+                    <div class="badge-pill mx-auto">
+                        <span class="badge-text">Respuestas Rápidas</span>
+                    </div>
+                    <h2 class="section-title">Preguntas Frecuentes</h2>
+                    <p class="section-subtitle">
+                        Todo lo que necesitás saber antes de comenzar a trabajar juntos. Transparencia y claridad desde el primer día.
+                    </p>
+                </div>
+
+                <div class="faq-accordion reveal-on-scroll">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item active">
+                        <button class="faq-question" type="button">
+                            <span>¿Cuánto tiempo toma el desarrollo de una página web o tienda virtual?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Para landing pages y páginas institucionales, el plazo habitual de desarrollo es de <strong>5 a 10 días hábiles</strong>. Para proyectos de e-commerce o plataformas más complejas con integraciones personalizadas, suele demorar entre <strong>12 a 20 días hábiles</strong>, coordinando revisiones periódicas con vos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">
+                            <span>¿Cómo funcionan las automatizaciones con Inteligencia Artificial?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Conectamos tus canales (WhatsApp, correo, hojas de cálculo, CRM) con modelos de IA entrenados específicamente con la información de tus productos y servicios. El sistema puede responder preguntas recurrentes 24/7, calificar prospectos, enviar recordatorios y registrar pedidos sin intervención manual.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">
+                            <span>¿Cuáles son los métodos y modalidades de pago?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Trabajamos normalmente con un esquema del <strong>50% de anticipo</strong> para iniciar el proyecto y el <strong>50% restante contra entrega final</strong> y conformidad. Aceptamos transferencias bancarias, Mercado Pago, tarjetas de crédito y transferencias internacionales para clientes fuera de Argentina.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">
+                            <span>¿Incluye soporte, mantenimiento y capacitación posterior?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Sí. Todos los desarrollos incluyen un período de garantía post-lanzamiento para ajustes y soporte técnico. Además, te entregamos videos explicativos y guías para que vos o tu equipo puedan autoadministrar productos, textos y promociones fácilmente.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">
+                            <span>¿Trabajan con empresas fuera de Córdoba o de otros países?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Totalmente. Nuestro flujo de trabajo es 100% digital y remoto. Realizamos reuniones ágiles vía Google Meet o videollamada, y mantenemos comunicación fluida y constante por WhatsApp y correo electrónico con clientes de todo el país y el exterior.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: CONTACTO -->
+        <section id="contacto" class="contact-section">
+            <div class="container">
+                <div class="section-header text-center reveal-on-scroll">
+                    <div class="badge-pill mx-auto">
+                        <span class="badge-text">Conexión Inmediata</span>
+                    </div>
+                    <h2 class="section-title">Comencemos a potenciar tu proyecto hoy</h2>
+                    <p class="section-subtitle">
+                        Elegí tu canal preferido o completá el formulario para recibir una propuesta personalizada y sin compromiso.
+                    </p>
+                </div>
+
+                <div class="contact-layout">
+                    <!-- Tarjetas de Canales Directos -->
+                    <div class="contact-channels reveal-on-scroll">
+                        <div class="contact-info-card">
+                            <h3>Canales directos de atención</h3>
+                            <p>Contactate directamente con <strong>Emilio Ballistreri</strong> para una atención ágil y personalizada.</p>
+
+                            <div class="channels-list">
+                                <!-- Canal WhatsApp -->
+                                <div class="channel-item whatsapp-item" id="contact-whatsapp-card">
+                                    <div class="channel-icon">
+                                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="channel-content">
+                                        <span class="channel-label">WhatsApp Directo</span>
+                                        <strong class="channel-val">+54 9 351 517-1905</strong>
+                                        <div class="channel-actions-row">
+                                            <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20te%20escribo%20desde%20la%20p%C3%A1gina%20web%20para%20hacerte%20una%20consulta." target="_blank" rel="noopener noreferrer" class="channel-action">Abrir chat &rarr;</a>
+                                            <button type="button" class="btn-copy-chip" data-copy="3515171905" title="Copiar número de teléfono">📋 Copiar</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Canal Instagram -->
+                                <div class="channel-item instagram-item" id="contact-instagram-card">
+                                    <div class="channel-icon">
+                                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                        </svg>
+                                    </div>
+                                    <div class="channel-content">
+                                        <span class="channel-label">Instagram Oficial</span>
+                                        <strong class="channel-val">@eb_automatizaciones</strong>
+                                        <div class="channel-actions-row">
+                                            <a href="https://instagram.com/eb_automatizaciones" target="_blank" rel="noopener noreferrer" class="channel-action">Seguir perfil &rarr;</a>
+                                            <button type="button" class="btn-copy-chip" data-copy="eb_automatizaciones" title="Copiar usuario">📋 Copiar</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Canal Email -->
+                                <div class="channel-item email-item" id="contact-email-card">
+                                    <div class="channel-icon">
+                                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                            <polyline points="22,6 12,13 2,6"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="channel-content">
+                                        <span class="channel-label">Correo Electrónico</span>
+                                        <strong class="channel-val">ballistreriemilio18@gmail.com</strong>
+                                        <div class="channel-actions-row">
+                                            <a href="mailto:ballistreriemilio18@gmail.com?subject=Consulta%20desde%20eb_automatizaciones" class="channel-action">Redactar correo &rarr;</a>
+                                            <button type="button" class="btn-copy-chip" data-copy="ballistreriemilio18@gmail.com" title="Copiar correo electrónico">📋 Copiar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="availability-badge">
+                                <span class="pulse-indicator"></span>
+                                <span>Respuestas habituales en menos de 2 horas hábiles</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario Interactivo -->
+                    <div class="contact-form-wrapper reveal-on-scroll">
+                        <form id="contact-form" class="contact-form" novalidate>
+                            <h3 class="form-title">Envianos tu mensaje</h3>
+                            <p class="form-desc">Completá tus datos y te responderemos a la brevedad con la mejor alternativa para tu empresa.</p>
+
+                            <div class="form-row">
+                                <div class="form-group" id="group-nombre">
+                                    <label for="nombre">Nombre completo *</label>
+                                    <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+                                    <span class="field-error-msg">Por favor ingresá tu nombre</span>
+                                </div>
+                                <div class="form-group" id="group-telefono">
+                                    <label for="telefono">WhatsApp / Teléfono *</label>
+                                    <input type="tel" id="telefono" name="telefono" placeholder="Ej: +54 9 351..." required>
+                                    <span class="field-error-msg">Por favor ingresá tu teléfono</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="group-email">
+                                <label for="email">Correo electrónico *</label>
+                                <input type="email" id="email" name="email" placeholder="nombre@empresa.com" required>
+                                <span class="field-error-msg">Ingresá un correo electrónico válido</span>
+                            </div>
+
+                            <div class="form-group" id="group-servicio">
+                                <label for="servicio">Servicio de interés principal *</label>
+                                <select id="servicio" name="servicio" required>
+                                    <option value="" disabled selected>Seleccioná una opción...</option>
+                                    <option value="Páginas Web">Páginas Web (Institucional / Landing)</option>
+                                    <option value="E-commerce">E-commerce (Tienda Online)</option>
+                                    <option value="Automatizaciones">Automatizaciones & Inteligencia Artificial</option>
+                                    <option value="Diseño Gráfico">Diseño Gráfico & Branding</option>
+                                    <option value="Gestión de Redes">Gestión Integral de Redes Sociales</option>
+                                    <option value="Pack Integral">Pack Integral / Proyecto a medida</option>
+                                </select>
+                                <span class="field-error-msg">Por favor seleccioná un servicio</span>
+                            </div>
+
+                            <div class="form-group" id="group-mensaje">
+                                <label for="mensaje">Detalles de tu consulta o proyecto *</label>
+                                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Contanos brevemente qué te gustaría implementar o mejorar en tu negocio..." required></textarea>
+                                <span class="field-error-msg">Por favor escribí los detalles de tu consulta</span>
+                            </div>
+
+                            <div class="form-buttons">
+                                <button type="button" id="btn-submit-whatsapp" class="btn btn-whatsapp-primary w-100">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                                    <span>Enviar mensaje por WhatsApp</span>
+                                </button>
+                                <button type="submit" id="btn-submit-email" class="btn btn-secondary w-100">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                    <span>Enviar vía Correo Electrónico</span>
+                                </button>
+                            </div>
+                            <p class="form-security-note">🔒 Tus datos están protegidos y solo se utilizarán para coordinar tu consulta.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo-row">
+                        <img src="assets/images/logo.jpg" alt="Logo eb_automatizaciones" class="footer-logo-img">
+                        <div>
+                            <span class="footer-brand-title">eb_automatizaciones</span>
+                            <span class="footer-brand-sub">Emilio Ballistreri · IA & Automatización</span>
+                        </div>
+                    </div>
+                    <p class="footer-tagline">
+                        Soluciones tecnológicas y visuales pensadas para modernizar empresas, optimizar su tiempo y multiplicar sus clientes.
+                    </p>
+                </div>
+
+                <div class="footer-links-group">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#cotizador">Cotizador</a></li>
+                        <li><a href="#clientes">Clientes</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-group">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#servicio-web">Páginas Web</a></li>
+                        <li><a href="#servicio-ecommerce">E-commerce</a></li>
+                        <li><a href="#servicio-automatizaciones">Automatizaciones & IA</a></li>
+                        <li><a href="#servicio-diseno">Diseño Gráfico</a></li>
+                        <li><a href="#servicio-redes">Gestión de Redes</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact-group">
+                    <h4>Conectá con nosotros</h4>
+                    <div class="footer-social-links">
+                        <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20te%20contacto%20desde%20tu%20web." target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                            <span>WhatsApp: 351 517-1905</span>
+                        </a>
+                        <a href="https://instagram.com/eb_automatizaciones" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            <span>Instagram: @eb_automatizaciones</span>
+                        </a>
+                        <a href="mailto:ballistreriemilio18@gmail.com" class="footer-social-btn" aria-label="Email">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span>ballistreriemilio18@gmail.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 <strong>eb_automatizaciones</strong> · Emilio Ballistreri. Todos los derechos reservados.</p>
+                <p class="footer-location">Córdoba, Argentina · Cobertura y servicios globales</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DIRECTO A WHATSAPP -->
+    <aside class="floating-whatsapp-container">
+        <div class="floating-tooltip" id="floating-tooltip">
+            ¿Tenés alguna consulta? ¡Escribinos!
+        </div>
+        <a href="https://wa.me/5493515171905?text=Hola%20Emilio,%20te%20contacto%20desde%20la%20p%C3%A1gina%20web%20para%20hacerte%20una%20consulta." target="_blank" rel="noopener noreferrer" class="floating-whatsapp-btn" id="floating-whatsapp-btn" aria-label="Contactar por WhatsApp">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+            <span class="ping-circle"></span>
+        </a>
+    </aside>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
